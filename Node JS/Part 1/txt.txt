@@ -1,0 +1,38 @@
+What is Node.js?
+    JavaScript run time Enviroment.
+    It is used for Server side Programing
+
+    *Node.js is not a language, libeary or framework
+
+Node REPL
+    .help gives us commands
+
+Process 
+    process : The object provides information about control over the current Node.js process
+
+    process.argv : returns an array containing the commands-line arguments passed when the Node.js process was launched
+
+
+module.exports
+    requring files
+
+    require()  a built-in function to include external moudles that exist in separts file.
+
+    moudle.exports   a spical object
+
+
+NPM (Node Package Manager)
+    npm is the standard Package Manager for Node.js
+
+Installing Package
+    node_modules : The node_modules folder contains every installed dependency for your project.
+
+    package-lock.json : it records the exact vresion of every installed dependency, 
+                        includeits sub-dependencies adn their version.
+
+
+package.json
+    THE package.json files contains descriptive and functional metadata about a project, such as a name, version and dependencies.
+
+require V/S import 
+    import {sum}
