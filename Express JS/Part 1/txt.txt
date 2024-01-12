@@ -8,3 +8,9 @@ Library V/S Framework
 Express :
     A Node.js web application framework that help us to make web application it is used for Server side programing.
 
+*port
+    Port are the logical endpoints of a networks connections that is used to exchange information between a web server and a client.
+
+
+Routing. 
+    It is process of selecting a path traffic in a network or between or across multiple network
