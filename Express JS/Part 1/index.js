@@ -33,9 +33,11 @@ app.get("/about", (req, res) => {
 });
 
 app.get("*", (req, res) => {
-    console.log("This path not exist");
-})
-
+    res.send("This path is not exist");
+});
 app.post("/", (req, res) => {
-    console.log("this is post req.");
-})
+    res.send("You send a post req");
+});
+
+
+
