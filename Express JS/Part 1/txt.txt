@@ -1,0 +1,10 @@
+Library V/S Framework
+    Library :
+        A library is a collection of pre-written code that can be used to perform specific tast.
+
+    Framework : 
+        A framework is a pre-written code tahat procides a structure for developing software application.
+
+Express :
+    A Node.js web application framework that help us to make web application it is used for Server side programing.
+
