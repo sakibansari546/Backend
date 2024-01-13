@@ -35,4 +35,9 @@ package.json
     THE package.json files contains descriptive and functional metadata about a project, such as a name, version and dependencies.
 
 require V/S import 
-    import {sum}
+    import { sum } from "./math.js"
+
+    We  can selectively load only the pieces we need th require but with import, we can selectively load only the pieces we need , which can save memory
+
+    Loading is synchronous for 'require' but can be asynchronous for 'import'
+    
