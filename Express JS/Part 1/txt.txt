@@ -13,4 +13,9 @@ Express :
 
 
 Routing. 
-    It is process of selecting a path traffic in a network or between or across multiple network.
+    It is process of selecting a path traffic in a network or between or across multiple network
+
+
+Nodemon
+    To automatically restart server with code change.
+    

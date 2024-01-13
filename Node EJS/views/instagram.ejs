@@ -1,19 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include("includes/head.ejs") %>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram</title>
-</head>
+    <body>
 
-<body>
-    <h1>This page belongs to <%= data.name %>
-    </h1>
-    <button>Follow</button>
-    <button>Message</button>
-    <h3>Followers:</h3>
+        <section>
+            <div class="container">
+                <div class="content">
+                    <div class="left">
+                        <img width="200px"
+                            src="https://static-00.iconduck.com/assets.00/profile-circle-icon-2048x2048-cqe5466q.png"
+                            alt="">
+                    </div>
+                    <div class="right">
+                        <div class="top">
+                            <div class="username">Username : @<%= data.name %>
+                            </div>
+                            <div class="edit-profile"><button>Edit Profile</button></div>
+                            <div class="view-archive"><button>View Archive</button></div>
+                        </div>
+                        <div class="mid">
+                            <div class="post">Post : <%=data.posts.length %>
+                            </div>
+                            <div class="follower">Follower : <%= data.followers %>
+                            </div>
+                            <div class="following">Following : <%= data.following %>
+                            </div>
+                        </div>
+                        <div class="bottom">
+                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
+                </div>
 
-</body>
 
-</html>
+                <div class="posts">
+                    <% for (const post of data.posts) { %>
+                        <div class="post">
+                            <img width="300" src="<%= post.image %>" alt="">
+
+                            <div class="likes-comm">
+                                <div class="follower">Likes : <%= post.likes %>
+                                </div>
+                                <div class="follower">Comments : <%= post.comments %>
+                                </div>
+                            </div>
+                        </div>
+                        <% } %>
+                </div>
+            </div>
+        </section>
+
+        <%- // include("includes/footer.ejs") %>
+
+            <script src="/app.js"></script>
+    </body>
+
+
+    </html>
