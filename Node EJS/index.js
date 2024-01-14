@@ -29,6 +29,12 @@ app.set("views", path.join(__dirname, "/views"))
 app.get("/rollDice", (req, res) => {
     let diceValue = Math.floor(Math.random() * 6) + 1;
     res.render("rollDice.ejs", { diceValue })
+});
+
+app.get("/", (req, res) => {
+    let diceValue = Math.floor(Math.random() * 6) + 1;
+    res.render("rollDice.ejs", { diceValue })
+    res.send("Root path")
 })
 
 
@@ -43,4 +49,6 @@ app.get("/ig/:username", (req, res) => {
     let data = instaData[username];
     console.log("Data : " + data);
     res.render("instagram.ejs", { data })
+
+
 })
