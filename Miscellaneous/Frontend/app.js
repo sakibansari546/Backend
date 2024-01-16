@@ -147,7 +147,6 @@ arr.sayHello = () => {
 
 
 
-class Mammal {
 // class Mammal {
 //     constructor(name) {
 //         this.name = name;
