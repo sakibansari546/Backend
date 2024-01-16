@@ -31,8 +31,9 @@
                             Post</a></button>
                     <button class="downvote-btn"><a href="http://localhost:8080/posts/<%= post.id %>/edit">Edit
                             Post</a></button>
-                    <button class="comment-btn"><a href="http://localhost:8080/posts/<%= post.id %>">Delete
-                            Post</a></button>
+                    <form method="post" action="/posts/<%= post.id %>?_method=DELETE">
+                        <button class="comment-btn">Delete Post</button>
+                    </form>
                 </div>
             </div>
             <% } %>

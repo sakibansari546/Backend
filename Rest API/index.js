@@ -115,4 +115,11 @@ app.get("/posts/:id/edit", (req, res) => {
 // ================== //
 // Implement : Delete //
 // ================== //
-Destroy Route
+// Destroy Route
+// Delete /post/:id  to delete specific post
+
+app.delete('/posts/:id', (req, res) => {
+    let { id } = req.params;
+    posts = posts.filter((post) => id !== post.id);
+    res.redirect("/posts")
+})
