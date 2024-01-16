@@ -29,8 +29,10 @@
                 <div class="post-footer">
                     <button class="upvote-btn"><a href="http://localhost:8080/posts/<%= post.id %>">Read
                             Post</a></button>
-                    <button class="downvote-btn">Edit Post</button>
-                    <button class="comment-btn">Delete Post</button>
+                    <button class="downvote-btn"><a href="http://localhost:8080/posts/<%= post.id %>/edit">Edit
+                            Post</a></button>
+                    <button class="comment-btn"><a href="http://localhost:8080/posts/<%= post.id %>/edit">Delete
+                            Post</a></button>
                 </div>
             </div>
             <% } %>
