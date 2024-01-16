@@ -37,6 +37,12 @@ app.get("/", (req, res) => {
 app.get("/rollDice", (req, res) => {
     let diceValue = Math.floor(Math.random() * 6) + 1;
     res.render("rollDice.ejs", { diceValue })
+});
+
+app.get("/", (req, res) => {
+    let diceValue = Math.floor(Math.random() * 6) + 1;
+    res.render("rollDice.ejs", { diceValue })
+    res.send("Root path")
 })
 
 
@@ -49,6 +55,10 @@ app.get("/:username", (req, res) => {
     let { username } = req.params;
     const instaData = require("./data.json");
     let data = instaData[username];
+    console.log("Data : " + data);
+    res.render("instagram.ejs", { data })
+
+
     console.log(username);
     if (data) {
         res.render("instagram.ejs", { data });
