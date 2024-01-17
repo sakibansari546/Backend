@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecommerce Website Using HTML CSS and JS</title>
+    <title>Blogs</title>
     <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/c1fc3d2826.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/style.css">
@@ -48,7 +48,7 @@
     </section>
 
     <div class="new-post-btn">
-        <button><a href="#">Create Post</a></button>
+        <button><a href="http://localhost:8080/blogs/new">Create Post</a></button>
     </div>
     <section id="blog">
         <% blogs.forEach(blog=> {%>
@@ -57,15 +57,22 @@
                     <img src="<%= blog.image_url %>" alt="">
                 </div>
                 <div class="blog-details">
+                    <h3 class="author-name">
+                        @<%= blog.author %>
+                    </h3>
                     <h4>
                         <%= blog.title %>
                     </h4>
                     <p>
-                        <% blog.content.forEach(content=>{%>
-                            <%= content%>
-                                <% }) %>
+                        <%= blog.content %>
                     </p>
-                    <a href="#">Continue Reading</a>
+                    <a href="http://localhost:8080/blogs/<%= blog.id %>">Continue Reading →</a>
+                    <div style="display: flex; gap: 15px;">
+                        <button><a href="http://localhost:8080/blogs/<%= blog.id %>/edit">Edit Post →</a></button>
+                        <form method="post" action="/blogs/<%= blog.id %>?_method=DELETE">
+                            <button>Delete Post →</button>
+                        </form>
+                    </div>
                 </div>
                 <h1>
                     <%= blog.date %>
