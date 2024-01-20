@@ -1,20 +1,18 @@
 {
-  "name": "practice-rest-api",
+  "name": "node-with-db",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "ejs": "^3.1.9",
-    "express": "^4.18.2",
-    "method-override": "^3.0.0",
-    "uuid": "^9.0.1"
-  },
   "devDependencies": {
     "@faker-js/faker": "^8.3.1"
+  },
+  "dependencies": {
+    "mysql2": "^3.7.1"
   }
 }
