@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All - Users</title>
+    <style>
+        h2 {
+            text-align: center;
+        }
+
+        table,
+        td,
+        th {
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>All - Users</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% results.forEach(data=> {%>
+                <tr>
+                    <td>
+                        <%= data.id %>
+                    </td>
+                    <td>
+                        <%= data.username %>
+                    </td>
+                    <td>
+                        <%= data.email %>
+                    </td>
+                    <td>
+                        <form method="GET" action="/user/<%= data.id %>/edit">
+                            <button>Edit-></button>
+                        </form>
+                    </td>
+                </tr>
+                <%}); %>
+
+
+                    <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+
+</body>
+
+</html>
