@@ -117,7 +117,7 @@ app.get('/user', (req, res) => {
     try {
         connection.query(q, (err, results) => {
             if (err) throw err;
-            console.log(results);
+            // console.log(results);
             res.render("showUsers.ejs", { results })
         });
     } catch (error) {
@@ -153,23 +153,100 @@ app.get('/user/:id/edit', (req, res) => {
 
 // PATCH / user /: id  To edit username, if correct password was entered in form
 
-app.patch("/user/:id", (req, res) => {
+app.patch('/user/:id', (req, res) => {
     let { id } = req.params;
-    let { password: formPass, name: newUser } = req.body;
-
-    let q = `SELECT * FROM user WHERE id='${id}' `
+    let q = `SELECT * FROM user WHERE id='${id}'`;
+    let { password: fromPass, name: newUser } = req.body;
     try {
         connection.query(q, (err, results) => {
             if (err) throw err;
-            if (formPass != results.password) {
-                res.send("Wrong Password")
+            let result = results[0];
+            if (fromPass != result.password) {
+                res.send("Worng Pass");
             }
-            let result = results[0]
-            res.send("result")
+            else {
+                let q2 = `UPDATE user SET username='${newUser}' WHERE id='${id}'`;
+                connection.query(q2, (err, results) => {
+                    if (err) throw err;
+                    res.redirect('/user');
+                })
+            }
+        });
+    } catch (error) {
+        console.log(error);
+        res.set('ome Error With DB');
+    }
+})
 
+
+
+// ============================= //
+// Forth Route GET /user/:id/new //
+// ============================= //
+// Create form to add a new user to the DataBases
+
+app.get('/user/new', (req, res) => {
+    res.render("new.ejs")
+});
+
+app.post('/user', (req, res) => {
+    let val = req.body;
+    let q = `INSERT INTO user (id,username,email,password) VALUES ('${faker.string.uuid()}',' ${val.name}','${val.email}','${val.password}')`
+    try {
+        connection.query(q, (err, results) => {
+            if (err) throw err;
+            res.redirect('/user');
         });
     } catch (error) {
         console.log(error);
         res.set('ome Error With DB')
+    }
+});
+
+
+
+
+// ========================= //
+// Fifth Route GET /user/:id //
+// ========================= //
+app.get('/user/:id/delete', (req, res) => {
+    let { id } = req.params;
+    let q = `SELECT * FROM user WHERE id='${id}' `
+    try {
+        connection.query(q, (err, results) => {
+            if (err) throw err;
+            let result = results[0]
+            res.render("delete.ejs", { result })
+        });
+    } catch (error) {
+        console.log(error);
+        res.set('ome Error With DB')
+    }
+});
+
+app.delete('/user', (req, res) => {
+    let q = `SELECT * FROM user WHERE id='${id}'`;
+    let { password: fromPass, email: formEmail } = req.body;
+    try {
+        connection.query(q, (err, results) => {
+            if (err) throw err;
+            let result = results[0];
+            if ((result.password == fromPass) && (result.email == formEmail)) {
+                let q2 = `DELETE FROM user WHERE email='${user.email}' AND password='${user.password}'`;
+                connection.query(q2, (err, results) => {
+                    if (err) throw err;
+                    // res.redirect('/user');
+                    console.log(results);
+                    req.send(results)
+                })
+            }
+            else {
+                console.log(results);
+                res.send("Worng data")
+            }
+        });
+    } catch (error) {
+        console.log(error);
+        res.set('ome Error With DB');
     }
 })

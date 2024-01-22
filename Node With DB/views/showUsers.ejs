@@ -21,6 +21,9 @@
 <body>
 
     <h2>All - Users</h2>
+    <form method="get" action="/user/new">
+        <button>Add New user</button>
+    </form>
 
     <table>
         <thead>
@@ -29,6 +32,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -46,6 +50,11 @@
                     <td>
                         <form method="GET" action="/user/<%= data.id %>/edit">
                             <button>Edit-></button>
+                        </form>
+                    </td>
+                    <td>
+                        <form method="get" action="/user/<%= data.id %>/delete">
+                            <button>Delete</button>
                         </form>
                     </td>
                 </tr>
