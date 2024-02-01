@@ -40,3 +40,15 @@ app.use((req,res)=>{
     res.send("Bye")
 })
 ```
+
+### Creating Utility Middlware
+```
+app.use((req,res,next)=>{
+    req.responseTime = new Date(Date.now()).toString();
+    console.log(req.method, req.path, req.responseTime, req.hostname);
+    next();
+})
+```
+
+### API Token as query String
+Lets create a middle-ware for an api thst check if the access tocken was passed in the query tring or not.

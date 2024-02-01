@@ -1,6 +1,6 @@
-const express = require('express');
-const app = express();
-const port = 8080;
+// const express = require('express');
+// const app = express();
+// const port = 8080;
 
 // app.use((req, res, next) => {
 //     console.log("hi, I am a middleware");
@@ -14,20 +14,63 @@ const port = 8080;
 //     next();
 // })
 
-let checkToken = ("/api", (req, res, next) => {
+// let checkToken = ("/api", (req, res, next) => {
+//     let { token } = req.query;
+//     if (token === "giveaccess") {
+//         next();
+//     }
+//     res.send("ACCESS DENIED!");
+// })
+
+// app.get('/api', checkToken, (req, res) => {
+//     res.send('Data!');
+// })
+
+// app.get('/', checkToken, (req, res) => {
+//     res.send('Hello World!');
+// })
+
+// app.listen(port, () => {
+//     console.log(`App listening on port ${port}`)
+// });
+
+
+
+
+// ============== //
+// Error Handling //
+// ============== //
+
+const express = require('express');
+const app = express();
+const port = 8080;
+const ExpressError = require("./ExpressError");
+
+
+app.get('/', (req, res) => {
+    res.send("Hello world!")
+})
+
+let checkToken = ((req, res, next) => {
     let { token } = req.query;
     if (token === "giveaccess") {
         next();
     }
-    res.send("ACCESS DENIED!");
+    throw new ExpressError(401, "ACCESS DENIDE");
 })
 
 app.get('/api', checkToken, (req, res) => {
     res.send('Data!');
 })
 
-app.get('/', checkToken, (req, res) => {
-    res.send('Hello World!');
+app.get('/err', (req, res) => {
+    abd = BDA;
+    res.send("error root")
+})
+
+app.use((err, req, res, next) => {
+    console.log('--------- ERROR----------');
+    next(err)
 })
 
 app.listen(port, () => {
