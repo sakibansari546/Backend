@@ -68,9 +68,15 @@ app.get('/err', (req, res) => {
     res.send("error root")
 })
 
+app.get('/admin', (req, res) => {
+    throw new ExpressError(403, "Access to admin is forbiden")
+})
+
 app.use((err, req, res, next) => {
-    console.log('--------- ERROR----------');
-    next(err)
+    let { status = 500, massage } = err
+    // next(err)
+    // res.send(err)
+    res.status(status).send(massage);
 })
 
 app.listen(port, () => {
